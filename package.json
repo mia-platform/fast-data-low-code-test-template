@@ -9,7 +9,7 @@
   "author": "Mia-Platform",
   "license": "ISC",
   "devDependencies": {
-    "@mia-platform-internal/fast-data-automation-lib": "^1.1.1",
+    "@mia-platform-internal/fast-data-automation-lib": "^1.2.0",
     "mongodb": "^4.4.1",
     "tap": "^16.0.0",
     "testcontainers": "^8.4.0"
