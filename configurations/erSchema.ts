@@ -1,4 +1,4 @@
-import { ERSchema } from '../tests/testUtils'
+import { ERSchema } from '../tests/interfaces'
 
 const erSchema: ERSchema = {
   'version': '1.0.0',

@@ -1,4 +1,6 @@
-export default {
+import { Fixtures } from '../../interfaces'
+
+const fixtures: Fixtures = {
   pr_allergens: [
     {
       id_allergen: 'eggs',
@@ -168,3 +170,5 @@ export default {
     },
   ],
 }
+
+export default fixtures

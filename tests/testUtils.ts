@@ -2,34 +2,12 @@
 
 import { MongoClient } from 'mongodb'
 import { GenericContainer, StartedTestContainer } from 'testcontainers'
-import { ProjectionsSchema } from './interfaces'
 import path from 'path'
 import fs from 'fs'
 import erSchema from '../configurations/erSchema'
 import aggregation from '../configurations/aggregation'
 import Tap from 'tap'
-
-type ProjectionName = keyof ProjectionsSchema
-export type Fixtures = {
-    [K in ProjectionName]: (ProjectionsSchema[K] & {
-        __STATE__: 'PUBLIC'
-    })[]
-}
-export type ERSchema = {
-    version: '1.0.0',
-    config: {
-        [k in ProjectionName]: {
-            outgoing: {
-                [j in ProjectionName]?: j extends k ? never : {
-                    conditions: Record<string, {
-                        condition: object
-                        oneToMany?: boolean
-                    }>
-                }
-            }
-        }
-    }
-}
+import { Fixtures } from './interfaces'
 
 export const initializeMongo = async(test: Tap.Test, fixtures: Fixtures) => {
   let mongoUri

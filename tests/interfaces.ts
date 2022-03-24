@@ -48,3 +48,26 @@ export type ProjectionsSchema = {
         STARS: 1 | 2 | 3 | 4 | 5
     }
 }
+
+type ProjectionName = keyof ProjectionsSchema
+
+export type Fixtures = {
+    [K in ProjectionName]: (ProjectionsSchema[K] & {
+        __STATE__: 'PUBLIC'
+    })[]
+}
+export type ERSchema = {
+    version: '1.0.0',
+    config: {
+        [k in ProjectionName]: {
+            outgoing: {
+                [j in ProjectionName]?: j extends k ? never : {
+                    conditions: Record<string, {
+                        condition: object
+                        oneToMany?: boolean
+                    }>
+                }
+            }
+        }
+    }
+}
