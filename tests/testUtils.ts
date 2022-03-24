@@ -1,3 +1,5 @@
+/* eslint-disable no-sync */
+
 import { MongoClient } from 'mongodb'
 import { GenericContainer, StartedTestContainer } from 'testcontainers'
 import { ProjectionsSchema } from './interfaces'
@@ -5,6 +7,7 @@ import path from 'path'
 import fs from 'fs'
 import erSchema from '../configurations/erSchema'
 import aggregation from '../configurations/aggregation'
+import Tap from 'tap'
 
 type ProjectionName = keyof ProjectionsSchema
 export type Fixtures = {
@@ -28,7 +31,7 @@ export type ERSchema = {
     }
 }
 
-export const initializeMongo = async(t: Tap.Test, fixtures: Fixtures) => {
+export const initializeMongo = async(test: Tap.Test, fixtures: Fixtures) => {
   let mongoUri
   let mongoContainer: StartedTestContainer
 
@@ -56,7 +59,7 @@ export const initializeMongo = async(t: Tap.Test, fixtures: Fixtures) => {
     })
   )
 
-  t.teardown(async() => {
+  test.teardown(async() => {
     for (const collectionName of Object.keys(fixtures)) {
       try {
         // eslint-disable-next-line no-await-in-loop

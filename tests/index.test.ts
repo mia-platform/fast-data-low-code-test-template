@@ -1,3 +1,8 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-sync */
+/* eslint-disable id-length */
+
 import tap from 'tap'
 import { compileConfigurations, initializeMongo } from './testUtils'
 import pino from 'pino'
