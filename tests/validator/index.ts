@@ -1,7 +1,7 @@
-import validTestCases from "./valid";
-import invalidTestCases from "./invalid";
+import validTestCases from './valid'
+import invalidTestCases from './invalid'
 
 export default {
-    validTestCases,
-    invalidTestCases
+  validTestCases,
+  invalidTestCases,
 } as const

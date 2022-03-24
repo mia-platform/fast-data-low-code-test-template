@@ -6,7 +6,8 @@
   "scripts": {
     "test": "tap --ts ./tests/index.test.ts",
     "compile-config": "ts-node scripts/compile-config.ts",
-    "lint": "eslint . --ignore-path=.gitignore --ext=ts"
+    "lint": "eslint . --ignore-path=.gitignore --ext=ts",
+    "lint-fix": "eslint . --ignore-path=.gitignore --ext=ts --fix"
   },
   "author": "Mia-Platform",
   "license": "ISC",

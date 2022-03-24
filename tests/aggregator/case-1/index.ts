@@ -1,9 +1,9 @@
-import expected from "./expected";
-import fixtures from "./fixtures";
-import identifier from "./identifier";
+import expected from './expected'
+import fixtures from './fixtures'
+import identifier from './identifier'
 
 export default {
-    expected,
-    fixtures,
-    identifier
+  expected,
+  fixtures,
+  identifier,
 } as const
