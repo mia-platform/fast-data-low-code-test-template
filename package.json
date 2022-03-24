@@ -1,18 +1,22 @@
-{ 
+{
   "name": "fast-data-low-code-test-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tap ./tests/index.test.js"
+    "test": "tap --ts ./tests/index.test.ts",
+    "compile-config": "ts-node scripts/compile-config.ts"
   },
   "author": "Mia-Platform",
   "license": "ISC",
   "devDependencies": {
     "@mia-platform-internal/fast-data-automation-lib": "^1.2.0",
+    "@types/tap": "^15.0.6",
     "mongodb": "^4.4.1",
     "tap": "^16.0.0",
-    "testcontainers": "^8.4.0"
+    "testcontainers": "^8.4.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
   },
   "dependencies": {
     "pino": "^7.8.1"
