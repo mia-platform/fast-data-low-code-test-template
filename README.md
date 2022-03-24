@@ -9,11 +9,14 @@ This repository is a template you can use to start to test your Fast Data Low Co
     - erSchema.json: the ER-Schema configuration file
     - additional custom function files
 - /tests:
-    - /cases: this sub-folder contains the test cases of your tests
-        - /{case name}: this is one of your test case
+    - /aggregator: contains the test cases of your aggregator tests
+        - /{case name}: aggregator test case
             - expected.json: the single view you expected to have in this test case
             - fixtures.json: this file contains the fixtures (projections) you need for the aggregation
-            - identifier.json: it contains just the identifier of the projection change you are test in the test case
+            - identifier.json: it contains just the identifier of the projection change being tested for the current test case
+    - /validator: contains the test case of your validator tests
+      - /invalid: contains all the single view instances tha you expect your validator to consider invalid
+      - /valid: contains all the single view instances tha you expect your validator to consider valid
 
 ## Prerequisites
 
