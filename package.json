@@ -26,26 +26,28 @@
   },
   "dependencies": {
     "pino": "^7.8.1"
-  },"eslintConfig": {
-  "extends": [
-    "@mia-platform/eslint-config-mia"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "sourceType": "module"
   },
-  "rules": {
-    "sort-imports": [
-      "error",
-      {
-        "ignoreCase": true,
-        "ignoreDeclarationSort": true,
-        "ignoreMemberSort": true,
-        "allowSeparatedGroups": true
-      }
-    ]
-  },
-  "globals": {
-    "NodeJS": true
+  "eslintConfig": {
+    "extends": [
+      "@mia-platform/eslint-config-mia"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "rules": {
+      "sort-imports": [
+        "error",
+        {
+          "ignoreCase": true,
+          "ignoreDeclarationSort": true,
+          "ignoreMemberSort": true,
+          "allowSeparatedGroups": true
+        }
+      ]
+    },
+    "globals": {
+      "NodeJS": true
+    }
   }
 }
