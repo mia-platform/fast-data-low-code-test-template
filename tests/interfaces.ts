@@ -56,7 +56,7 @@ export type Fixtures = {
         __STATE__: 'PUBLIC'
     })[]
 }
-export type ERSchema = {
+export type SpecificERSchema = {
     version: '1.0.0',
     config: {
         [k in ProjectionName]: {
