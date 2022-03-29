@@ -1,4 +1,1 @@
-module.exports = (
-  logger,
-  singleView
-) => singleView.taxCode !== undefined
+module.exports = (logger, singleView) => typeof singleView.taxCode === 'string'
