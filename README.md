@@ -6,7 +6,7 @@ This repository is a template you can use to start testing your Fast Data Low Co
  
 - /configurations: this folder contains the Fast Data Low Code configurations
     - aggregation.ts: contains the aggregation schema
-    - erSchema.ts: contains the er schema
+    - erSchema.ts: contains the ER schema
     - additional custom function files (with .js extension)
 - /tests:
     - /aggregator: contains the test cases for the aggregator
