@@ -16,7 +16,7 @@ export const initializeMongo = async(test: Tap.Test, fixtures: Fixtures) => {
   if (process.env.MONGODB_URL !== undefined) {
     mongoUri = process.env.MONGODB_URL
   } else {
-    mongoContainer = await new GenericContainer('mongo:4.4')
+    mongoContainer = await new GenericContainer('mongo:5')
       .withExposedPorts(27017)
       .start()
 
