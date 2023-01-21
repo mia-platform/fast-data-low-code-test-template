@@ -60,7 +60,7 @@ export const compileConfigurations = (inputDir: string, outDir: string) => {
   const jsonIndent = 4
 
   if (fs.existsSync(outDir)) {
-    fs.rmdirSync(outDir, { recursive: true })
+    fs.rmSync(outDir, { recursive: true })
   }
   fs.mkdirSync(outDir, {})
 

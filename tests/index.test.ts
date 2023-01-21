@@ -98,7 +98,7 @@ tap.test('fast data test', async t => {
     t.end()
   })
 
-  fs.rmdirSync(configOutDir, { recursive: true })
+  fs.rmSync(configOutDir, { recursive: true })
 
   t.end()
 }).then()
