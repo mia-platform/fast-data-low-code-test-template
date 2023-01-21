@@ -7,7 +7,9 @@
     "lint": "eslint . --ignore-path=.gitignore --ext=ts",
     "unit": "tap --ts ./tests/index.test.ts",
     "test": "npm run lint && npm run unit",
-    "compile-config": "ts-node scripts/compile-config.ts"
+    "compile-config": "ts-node scripts/compile-config.ts",
+    "update-changelog": "node ./scripts/update-changelog.js ${npm_package_version}",
+    "version": "npm run update-changelog && git add CHANGELOG.md"
   },
   "author": "Mia-Platform",
   "license": "SEE LICENCE IN LICENSE",
