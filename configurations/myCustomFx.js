@@ -1,3 +1,1 @@
-module.exports = async function (){
-    return {isOk: 'ok'}
-}
+module.exports = async() => ({ isOk: 'ok' })
