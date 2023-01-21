@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tap --ts ./tests/index.test.ts",
-    "compile-config": "ts-node scripts/compile-config.ts",
     "lint": "eslint . --ignore-path=.gitignore --ext=ts",
-    "lint-fix": "eslint . --ignore-path=.gitignore --ext=ts --fix"
+    "unit": "tap --ts ./tests/index.test.ts",
+    "test": "npm run lint && npm run unit",
+    "compile-config": "ts-node scripts/compile-config.ts"
   },
   "author": "Mia-Platform",
   "license": "ISC",
@@ -49,5 +49,8 @@
     "globals": {
       "NodeJS": true
     }
+  },
+  "tap": {
+    "check-coverage": false
   }
 }
