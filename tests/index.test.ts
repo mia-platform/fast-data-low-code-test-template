@@ -1,7 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-sync */
-/* eslint-disable id-length */
 
 import tap from 'tap'
 import { compileConfigurations, initializeMongo } from './testUtils'
@@ -14,7 +10,7 @@ import aggregation from '../configurations/aggregation'
 
 import aggregatorTestCases from './aggregator'
 import * as path from 'path'
-import * as fs from 'fs'
+import * as fs from 'fs/promises'
 import validatorTestCases from './validator'
 
 tap.test('fast data test', async t => {
@@ -98,7 +94,7 @@ tap.test('fast data test', async t => {
     t.end()
   })
 
-  fs.rmdirSync(configOutDir, { recursive: true })
+  await fs.rm(configOutDir, { recursive: true })
 
   t.end()
 }).then()

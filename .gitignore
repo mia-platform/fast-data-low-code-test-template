@@ -2,4 +2,8 @@ node_modules
 .nyc_output
 .idea
 config-out
+.vscode
+coverage
+*.env
+*.log
 
