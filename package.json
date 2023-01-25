@@ -20,7 +20,7 @@
     "@mia-platform-internal/fast-data-automation-lib": "^2.3.4",
     "@mia-platform/eslint-config-mia": "^3.0.0",
     "@types/tap": "^15.0.7",
-    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.48.2",
     "eslint": "^8.32.0",
     "mongodb": "^4.13.0",
