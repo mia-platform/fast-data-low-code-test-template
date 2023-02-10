@@ -46,7 +46,11 @@ export default {
       stars: 1,
     },
   ],
-  withCustom: {
-    isOk: 'ok',
-  },
+  foodPreferencies: [
+    {
+      id: 'bacon',
+      comments: 'nuff said',
+      description: 'I mean, who doesn\'t like bacon?',
+    },
+  ],
 }

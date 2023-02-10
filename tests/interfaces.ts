@@ -46,6 +46,15 @@ export type ProjectionsSchema = {
         ID_DISH: string
         TEXT: string
         STARS: 1 | 2 | 3 | 4 | 5
+    },
+    pr_food_preferencies: {
+        ID_FOOD_PREFERENCE: string,
+        DESCRIPTION: string
+    },
+    pr_food_preferencies_registry: {
+        ID_FOOD_PREFERENCE: string,
+        ID_USER: string,
+        COMMENTS: string
     }
 }
 

@@ -169,6 +169,32 @@ const fixtures: Fixtures = {
       __STATE__: 'PUBLIC',
     },
   ],
+  pr_food_preferencies: [
+    {
+      ID_FOOD_PREFERENCE: 'bacon',
+      DESCRIPTION: 'I mean, who doesn\'t like bacon?',
+      __STATE__: 'PUBLIC',
+    },
+    {
+      ID_FOOD_PREFERENCE: 'fish',
+      DESCRIPTION: 'I like fish, it just I can\t eat it because I\'m allergic to it',
+      __STATE__: 'PUBLIC',
+    },
+  ],
+  pr_food_preferencies_registry: [
+    {
+      ID_FOOD_PREFERENCE: 'bacon',
+      ID_USER: 'ebc12dc8-939b-447e-88ef-6ef0b802a487',
+      COMMENTS: 'nuff said',
+      __STATE__: 'PUBLIC',
+    },
+    {
+      ID_FOOD_PREFERENCE: 'fish',
+      ID_USER: 'asdasdf8-939b-447e-88ef-6ef0b80fdsaf',
+      COMMENTS: 'explaination in the pr_food_preferencies component',
+      __STATE__: 'PUBLIC',
+    },
+  ],
 }
 
 export default fixtures

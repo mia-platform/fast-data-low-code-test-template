@@ -2,183 +2,243 @@ import { SpecificERSchema } from '../tests/interfaces'
 import { ERSchema } from '@mia-platform-internal/fast-data-automation-lib'
 
 const erSchema: SpecificERSchema & ERSchema = {
-  version: '1.0.0',
-  config: {
-    pr_dishes: {
-      outgoing: {
-        pr_restaurants: {
-          conditions: {
-            dish_to_rest: {
-              condition: {
-                id_restaurant: 'id_restaurant',
+  'version': '1.0.0',
+  'config': {
+    'pr_dishes': {
+      'outgoing': {
+        'pr_restaurants': {
+          'conditions': {
+            'pr_dishes__to__pr_restaurants_0': {
+              'condition': {
+                'id_restaurant': 'id_restaurant',
               },
+              'oneToMany': false,
             },
           },
         },
-        pr_orders_dishes: {
-          conditions: {
-            dish_to_order_dish: {
-              condition: {
-                ID_DISH: 'id_dish',
+        'pr_orders_dishes': {
+          'conditions': {
+            'pr_dishes__to__pr_orders_dishes_0': {
+              'condition': {
+                'ID_DISH': 'id_dish',
               },
+              'oneToMany': false,
             },
           },
         },
-        pr_reviews: {
-          conditions: {
-            dish_to_rev: {
-              condition: {
-                ID_DISH: 'id_dish',
+        'pr_reviews': {
+          'conditions': {
+            'pr_dishes__to__pr_reviews_0': {
+              'condition': {
+                'ID_DISH': 'id_dish',
               },
-            },
-          },
-        },
-      },
-    },
-    pr_orders_dishes: {
-      outgoing: {
-        pr_orders: {
-          conditions: {
-            order_dish_to_order: {
-              condition: {
-                ID_ORDER: 'ID_ORDER',
-              },
-            },
-          },
-        },
-        pr_dishes: {
-          conditions: {
-            order_dish_to_dish: {
-              condition: {
-                id_dish: 'ID_DISH',
-              },
+              'oneToMany': false,
             },
           },
         },
       },
     },
-    pr_orders: {
-      outgoing: {
-        pr_orders_dishes: {
-          conditions: {
-            order_to_order_dish: {
-              condition: {
-                ID_ORDER: 'ID_ORDER',
+    'pr_restaurants': {
+      'outgoing': {
+        'pr_dishes': {
+          'conditions': {
+            'pr_restaurants__to__pr_dishes_0': {
+              'condition': {
+                'id_restaurant': 'id_restaurant',
               },
-              oneToMany: true,
-            },
-          },
-        },
-        pr_registry: {
-          conditions: {
-            order_to_reg: {
-              condition: {
-                ID_USER: 'ID_USER',
-              },
+              'oneToMany': false,
             },
           },
         },
       },
     },
-    pr_restaurants: {
-      outgoing: {
-        pr_dishes: {
-          conditions: {
-            res_to_dish: {
-              condition: {
-                id_restaurant: 'id_restaurant',
+    'pr_orders': {
+      'outgoing': {
+        'pr_orders_dishes': {
+          'conditions': {
+            'pr_orders__to__pr_orders_dishes_0': {
+              'condition': {
+                'ID_ORDER': 'ID_ORDER',
               },
+              'oneToMany': false,
+            },
+          },
+        },
+        'pr_registry': {
+          'conditions': {
+            'pr_orders__to__pr_registry_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
+              },
+              'oneToMany': true,
             },
           },
         },
       },
     },
-    pr_allergens_registry: {
-      outgoing: {
-        pr_allergens: {
-          conditions: {
-            aller_reg_to_aller: {
-              condition: {
-                id_allergen: 'ID_ALLERGEN',
+    'pr_orders_dishes': {
+      'outgoing': {
+        'pr_dishes': {
+          'conditions': {
+            'pr_orders_dishes__to__pr_dishes_0': {
+              'condition': {
+                'id_dish': 'ID_DISH',
               },
+              'oneToMany': false,
             },
           },
         },
-        pr_registry: {
-          conditions: {
-            aller_reg_to_reg: {
-              condition: {
-                ID_USER: 'ID_USER',
+        'pr_orders': {
+          'conditions': {
+            'pr_orders_dishes__to__pr_orders_0': {
+              'condition': {
+                'ID_ORDER': 'ID_ORDER',
               },
-            },
-          },
-        },
-      },
-    },
-    pr_allergens: {
-      outgoing: {
-        pr_allergens_registry: {
-          conditions: {
-            aller_to_aller_reg: {
-              condition: {
-                ID_ALLERGEN: 'id_allergen',
-              },
+              'oneToMany': false,
             },
           },
         },
       },
     },
-    pr_registry: {
-      outgoing: {
-        pr_orders: {
-          conditions: {
-            reg_to_order: {
-              condition: {
-                ID_USER: 'ID_USER',
+    'pr_reviews': {
+      'outgoing': {
+        'pr_dishes': {
+          'conditions': {
+            'pr_reviews__to__pr_dishes_0': {
+              'condition': {
+                'id_dish': 'ID_DISH',
               },
-              oneToMany: true,
+              'oneToMany': false,
             },
           },
         },
-        pr_reviews: {
-          conditions: {
-            reg_to_rev: {
-              condition: {
-                ID_USER: 'ID_USER',
+        'pr_registry': {
+          'conditions': {
+            'pr_reviews__to__pr_registry_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
               },
-              oneToMany: true,
-            },
-          },
-        },
-        pr_allergens_registry: {
-          conditions: {
-            reg_to_aller_reg: {
-              condition: {
-                ID_USER: 'ID_USER',
-              },
-              oneToMany: true,
+              'oneToMany': false,
             },
           },
         },
       },
     },
-    pr_reviews: {
-      outgoing: {
-        pr_registry: {
-          conditions: {
-            rev_to_reg: {
-              condition: {
-                ID_USER: 'ID_USER',
+    'pr_registry': {
+      'outgoing': {
+        'pr_orders': {
+          'conditions': {
+            'pr_registry__to__pr_orders_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
               },
+              'oneToMany': false,
             },
           },
         },
-        pr_dishes: {
-          conditions: {
-            rev_to_dish: {
-              condition: {
-                id_dish: 'ID_DISH',
+        'pr_allergens_registry': {
+          'conditions': {
+            'pr_registry__to__pr_allergens_registry_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
               },
+              'oneToMany': true,
+            },
+          },
+        },
+        'pr_food_preferencies_registry': {
+          'conditions': {
+            'pr_registry__to__pr_food_preferencies_registry_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
+              },
+              'oneToMany': true,
+            },
+          },
+        },
+        'pr_reviews': {
+          'conditions': {
+            'pr_registry__to__pr_reviews_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
+              },
+              'oneToMany': false,
+            },
+          },
+        },
+      },
+    },
+    'pr_allergens_registry': {
+      'outgoing': {
+        'pr_registry': {
+          'conditions': {
+            'pr_allergens_registry__to__pr_registry_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
+              },
+              'oneToMany': false,
+            },
+          },
+        },
+        'pr_allergens': {
+          'conditions': {
+            'pr_allergens_registry__to__pr_allergens_0': {
+              'condition': {
+                'id_allergen': 'ID_ALLERGEN',
+              },
+              'oneToMany': false,
+            },
+          },
+        },
+      },
+    },
+    'pr_allergens': {
+      'outgoing': {
+        'pr_allergens_registry': {
+          'conditions': {
+            'pr_allergens__to__pr_allergens_registry_0': {
+              'condition': {
+                'ID_ALLERGEN': 'id_allergen',
+              },
+              'oneToMany': false,
+            },
+          },
+        },
+      },
+    },
+    'pr_food_preferencies_registry': {
+      'outgoing': {
+        'pr_registry': {
+          'conditions': {
+            'pr_food_preferencies_registry__to__pr_registry_0': {
+              'condition': {
+                'ID_USER': 'ID_USER',
+              },
+              'oneToMany': false,
+            },
+          },
+        },
+        'pr_food_preferencies': {
+          'conditions': {
+            'pr_food_preferencies_registry__to__pr_food_preferencies_0': {
+              'condition': {
+                'ID_FOOD_PREFERENCE': 'ID_FOOD_PREFERENCE',
+              },
+              'oneToMany': false,
+            },
+          },
+        },
+      },
+    },
+    'pr_food_preferencies': {
+      'outgoing': {
+        'pr_food_preferencies_registry': {
+          'conditions': {
+            'pr_food_preferencies__to__pr_food_preferencies_registry_0': {
+              'condition': {
+                'ID_FOOD_PREFERENCE': 'ID_FOOD_PREFERENCE',
+              },
+              'oneToMany': false,
             },
           },
         },
