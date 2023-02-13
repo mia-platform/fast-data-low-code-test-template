@@ -17,8 +17,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm test
+    - name: Login to Mia NPM Internal  Registry
+      run: |
+        echo -e "@mia-platform-internal:registry=https://${{ secrets.MIA_NPM_INTERNAL_REGISTRY }}" > .npmrc
+        echo -e "//${{ secrets.MIA_NPM_INTERNAL_REGISTRY }}:username=${{ secrets.MIA_NPM_INTERNAL_USERNAME }}" >> .npmrc
+        echo -e "//${{ secrets.MIA_NPM_INTERNAL_REGISTRY }}:_password=${{ secrets.MIA_NPM_INTERNAL_PASSWORD }}" >> .npmrc
+    - name: Install Packages
+      run: npm ci; rm -f .npmrc
+    - name: Execute Tests
+      run: npm test
