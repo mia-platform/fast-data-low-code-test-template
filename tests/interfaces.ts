@@ -31,6 +31,7 @@ export type ProjectionsSchema = {
         TAX_CODE: string
         NAME: string
         SURNAME: string
+        GENDER: 'Male' | 'Female'
         EMAIL: string
         ADDRESS: string
         PHONE: string
@@ -62,7 +63,7 @@ type ProjectionName = keyof ProjectionsSchema
 
 export type Fixtures = {
     [K in ProjectionName]: (ProjectionsSchema[K] & {
-        __STATE__: 'PUBLIC'
+        __STATE__: 'PUBLIC' | 'DRAFT' | 'TRASH' | 'DELETED'
     })[]
 }
 export type SpecificERSchema = {

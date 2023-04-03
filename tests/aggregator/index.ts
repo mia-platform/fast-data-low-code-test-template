@@ -1,8 +1,8 @@
-import case1 from './case-1'
+import usualE2E from './usual-e2e'
 
 export default [
   {
-    name: 'case 1',
-    data: case1,
+    name: 'Usual E2E tests',
+    data: usualE2E,
   },
 ] as const

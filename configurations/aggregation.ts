@@ -1,13 +1,16 @@
 import { AggregationSchema } from '@mia-platform-internal/fast-data-automation-lib'
 
 const aggregation: AggregationSchema = {
-  'version': '1.0.0',
+  'version': '1.3.0',
   'config': {
     'SV_CONFIG': {
       'dependencies': {
         'pr_registry': {
           'type': 'projection',
           'on': '_identifier',
+          'identifierQueryMapping': {
+            'ID_USER': '_identifier.idCustomer',
+          },
         },
         'ALLERGENS': {
           'type': 'config',
@@ -24,12 +27,39 @@ const aggregation: AggregationSchema = {
       },
       'mapping': {
         'idCustomer': 'pr_registry.ID_USER',
-        'taxCode': 'pr_registry.TAX_CODE',
+        'title': {
+          '_select': {
+            'options': [
+              {
+                'when': {
+                  '==': [
+                    'pr_registry.GENDER',
+                    '__string__[Male]',
+                  ],
+                },
+                'value': '__string__[Mr.]',
+              },
+              {
+                'when': {
+                  '==': [
+                    'pr_registry.GENDER',
+                    '__string__[Female]',
+                  ],
+                },
+                'value': '__string__[Mrs.]',
+              },
+            ],
+            'default': '__string__[]',
+          },
+        },
         'name': 'pr_registry.NAME',
         'surname': 'pr_registry.SURNAME',
-        'email': 'pr_registry.EMAIL',
-        'address': 'pr_registry.ADDRESS',
-        'telephone': 'pr_registry.PHONE',
+        'userInfo': {
+          'taxCode': 'pr_registry.TAX_CODE',
+          'email': 'pr_registry.EMAIL',
+          'address': 'pr_registry.ADDRESS',
+          'telephone': 'pr_registry.PHONE',
+        },
         'allergens': 'ALLERGENS',
         'orders': 'ORDERS',
         'foodPreferencies': 'FOOD_PREFERENCIES',
@@ -64,6 +94,8 @@ const aggregation: AggregationSchema = {
         'pr_food_preferencies': {
           'type': 'projection',
           'on': 'pr_food_preferencies_registry__to__pr_food_preferencies_0',
+          // NOTE: onStates is used here
+          'onStates': ['PUBLIC', 'DRAFT'],
         },
       },
       'mapping': {
@@ -110,19 +142,61 @@ const aggregation: AggregationSchema = {
     'DISHES': {
       'joinDependency': 'pr_orders_dishes',
       'dependencies': {
-        'pr_orders_dishes': {
-          'type': 'projection',
-          'on': 'pr_orders__to__pr_orders_dishes_0',
-        },
         'pr_dishes': {
           'type': 'projection',
           'on': 'pr_orders_dishes__to__pr_dishes_0',
+        },
+        'pr_orders_dishes': {
+          'type': 'projection',
+          'on': 'pr_orders__to__pr_orders_dishes_0',
         },
       },
       'mapping': {
         'id': 'pr_orders_dishes.ID_DISH',
         'description': 'pr_dishes.description',
         'price': 'pr_dishes.price',
+      },
+    },
+    'SPECIAL_REVIEWS': {
+      'joinDependency': 'pr_reviews',
+      'dependencies': {
+        'pr_reviews': {
+          'type': 'projection',
+          '_select': {
+            'options': [
+              {
+                'when': {
+                  '==': [
+                    'pr_registry.GENDER',
+                    '__string__[Female]',
+                  ],
+                },
+                'value': {
+                  'on': 'pr_registry__to__pr_reviews_female',
+                },
+              },
+              {
+                'when': {
+                  '==': [
+                    'pr_registry.GENDER',
+                    '__string__[Male]',
+                  ],
+                },
+                'value': {
+                  'on': 'pr_registry__to__pr_reviews_male',
+                },
+              },
+            ],
+            'default': {
+              'on': 'pr_registry__to__pr_reviews_0',
+            },
+          },
+        },
+      },
+      'mapping': {
+        'id': 'pr_reviews.ID_REVIEW',
+        'text': 'pr_reviews.TEXT',
+        'stars': 'pr_reviews.STARS',
       },
     },
   },
