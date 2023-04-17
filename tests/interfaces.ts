@@ -1,3 +1,5 @@
+import { DOCUMENT_STATES } from '@mia-platform-internal/fast-data-automation-lib'
+
 export type ProjectionsSchema = {
     pr_allergens: {
         id_allergen: string
@@ -53,7 +55,7 @@ type ProjectionName = keyof ProjectionsSchema
 
 export type Fixtures = {
     [K in ProjectionName]: (ProjectionsSchema[K] & {
-        __STATE__: 'PUBLIC'
+        __STATE__: DOCUMENT_STATES
     })[]
 }
 export type SpecificERSchema = {
