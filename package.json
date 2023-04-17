@@ -17,7 +17,7 @@
     "pino": "^8.11.0"
   },
   "devDependencies": {
-    "@mia-platform-internal/fast-data-automation-lib": "^2.3.5",
+    "@mia-platform-internal/fast-data-automation-lib": "^3.0.0",
     "@mia-platform/eslint-config-mia": "^3.0.0",
     "@types/tap": "^15.0.8",
     "@typescript-eslint/eslint-plugin": "^5.57.0",

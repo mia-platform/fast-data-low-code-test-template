@@ -1,4 +1,4 @@
-import { DOCUMENT_STATES } from '@mia-platform-internal/fast-data-automation-lib/lib/interface/AggregationSchema'
+import { DOCUMENT_STATES } from '@mia-platform-internal/fast-data-automation-lib'
 
 export type ProjectionsSchema = {
     pr_allergens: {
