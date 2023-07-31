@@ -14,7 +14,7 @@
   "author": "Mia-Platform",
   "license": "SEE LICENCE IN LICENSE",
   "dependencies": {
-    "pino": "^8.14.1"
+    "pino": "^8.14.2"
   },
   "devDependencies": {
     "@mia-platform-internal/fast-data-automation-lib": "^3.0.0",
